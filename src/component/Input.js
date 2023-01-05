@@ -47,7 +47,9 @@ const Input = (props) => {
             ></input>
           </div>
         </div>
-        <Button type='submit'>Add User</Button>
+        <Button className={classes.button_detail} type='submit'>
+          Add User
+        </Button>
       </form>
     </Card>
   );

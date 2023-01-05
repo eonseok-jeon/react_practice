@@ -4,3 +4,17 @@
   border-radius: 7px;
   box-shadow: 1px 1px 3px black;
 }
+
+.button:hover {
+  border: 1px solid #e9c99f;
+  background-color: #e9c99f;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px black;
+}
+
+.button:active {
+  border: 1px solid #e6a551;
+  background-color: #e6a551;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px black;
+}
