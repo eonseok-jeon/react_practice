@@ -12,10 +12,16 @@ const App = () => {
       ];
     });
   };
+  const deleteHandler = (getID) => {
+    setUserData((prevData) => {
+      return prevData.filter((elem) => elem.id !== getID);
+    });
+  };
+
   return (
     <div>
       <Input onChange={onChangeHandler} />
-      <UserList userData={userData} />
+      <UserList userData={userData} onClick={deleteHandler} />
     </div>
   );
 };

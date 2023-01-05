@@ -2,8 +2,11 @@ import Card from '../UI/Card';
 import UserDataDetail from './UserDataDetail';
 import classes from './UserList.module.css';
 
-// TODO: make user list
 const UserList = (props) => {
+  const deleteClickHandler = (event) => {
+    props.onClick(event);
+  };
+
   return (
     <Card className={classes.Item}>
       <ul>
@@ -11,7 +14,9 @@ const UserList = (props) => {
           <UserDataDetail
             name={elem.name}
             age={elem.age}
-            key={Math.random().toString()}
+            id={elem.id}
+            key={elem.id}
+            onClick={deleteClickHandler}
           />
         ))}
       </ul>
