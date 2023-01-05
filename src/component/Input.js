@@ -31,49 +31,73 @@ const Input = (props) => {
   };
   const [inValidName, setInValidName] = useState(false);
   const [inValidAge, setInValidAge] = useState(false);
-
-  return (
-    // TODO: cancel
-    <Card className={classes.wrapper__head}>
-      <form onSubmit={submitHandler}>
-        <div className={classes.head__inputs}>
-          {/* TODO: delete repeat (extra study) */}
-          <div
-            className={`${classes.head__input} ${
-              inValidName && classes.inValidName
-            }`}
-          >
-            <label htmlFor='userName'>User Name</label>
-            <input
-              value={userName}
-              id='userName'
-              type='text'
-              // required
-              onChange={nameChangeHandler}
-            ></input>
-          </div>
-          <div
-            className={`${classes.head__input} ${
-              inValidAge && classes.inValidAge
-            }`}
-          >
-            <label htmlFor='userAge'>User Age</label>
-            <input
-              value={userAge}
-              id='userAge'
-              type='number'
-              min='0'
-              // required
-              onChange={ageChangeHandler}
-            ></input>
-          </div>
-        </div>
-        <Button className={classes.button_detail} type='submit'>
-          Add User
-        </Button>
-      </form>
+  const [startEdit, setStartEdit] = useState(false);
+  const startEditHandler = () => {
+    setStartEdit(true);
+  };
+  const stopEditHandler = () => {
+    setStartEdit(false);
+  };
+  let main = (
+    <Card className={`${classes.wrapper__head} ${classes.forAdd}`}>
+      <Button className={classes.button__wannaAdd} onClick={startEditHandler}>
+        Wanna Add?
+      </Button>
     </Card>
   );
+  if (startEdit) {
+    main = // TODO: cancel
+      (
+        <Card className={classes.wrapper__head}>
+          <form onSubmit={submitHandler}>
+            <div className={classes.head__inputs}>
+              {/* TODO: delete repeat (extra study) */}
+              <div
+                className={`${classes.head__input} ${
+                  inValidName && classes.inValidName
+                }`}
+              >
+                <label htmlFor='userName'>User Name</label>
+                <input
+                  value={userName}
+                  id='userName'
+                  type='text'
+                  // required
+                  onChange={nameChangeHandler}
+                ></input>
+              </div>
+              <div
+                className={`${classes.head__input} ${
+                  inValidAge && classes.inValidAge
+                }`}
+              >
+                <label htmlFor='userAge'>User Age</label>
+                <input
+                  value={userAge}
+                  id='userAge'
+                  type='number'
+                  min='0'
+                  // required
+                  onChange={ageChangeHandler}
+                ></input>
+              </div>
+            </div>
+            <div className={classes.buttons}>
+              <Button className={classes.button__detail} type='submit'>
+                Add User
+              </Button>
+              <Button
+                className={classes.button__detail}
+                onClick={stopEditHandler}
+              >
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </Card>
+      );
+  }
+  return <div>{main}</div>;
 };
 
 export default Input;

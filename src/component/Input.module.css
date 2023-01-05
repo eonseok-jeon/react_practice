@@ -9,6 +9,10 @@
   background-color: #eae0d9;
   /* https://colorhunt.co/palette/f8ede3dfd3c3d0b8a885586f */
 }
+.forAdd {
+  align-items: center;
+}
+
 form {
   width: 100%;
 }
@@ -45,6 +49,17 @@ form {
   background-color: rgb(251, 160, 160);
 }
 
-.button_detail {
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.button__detail {
   width: 20%;
+}
+.button__wannaAdd {
+  width: 60%;
+  font-size: 1rem;
 }
