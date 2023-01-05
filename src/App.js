@@ -1,9 +1,11 @@
 import Input from './component/Input';
+import UserList from './component/UserList';
 
 const App = () => {
   return (
     <div>
-      <Input></Input>
+      <Input />
+      <UserList />
     </div>
   );
 };
