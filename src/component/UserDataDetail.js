@@ -9,7 +9,6 @@ const UserDataDetail = (props) => {
       <li onClick={deleteClickHandler3}>
         <div className={classes.name}>{props.name}</div>
         <div className={classes.age}>{props.age}</div>
-        <div className={classes.age}>{props.id}</div>
       </li>
     </Card>
   );

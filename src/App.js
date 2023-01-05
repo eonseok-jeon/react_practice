@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Card from './UI/Card';
 import Input from './component/Input';
 import UserList from './component/UserList';
 
@@ -21,7 +22,14 @@ const App = () => {
   return (
     <div>
       <Input onChange={onChangeHandler} />
-      <UserList userData={userData} onClick={deleteHandler} />
+      {userData.length === 0 && (
+        <Card>
+          <p style={{ textAlign: 'center' }}>No Data</p>
+        </Card>
+      )}
+      {userData.length > 0 && (
+        <UserList userData={userData} onClick={deleteHandler} />
+      )}
     </div>
   );
 };

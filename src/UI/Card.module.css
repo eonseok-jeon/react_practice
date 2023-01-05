@@ -1,4 +1,7 @@
 .card {
   border: 2px solid #dfd3c3;
   border-radius: 12px;
+  width: 50%;
+  margin: auto;
+  background-color: #dfd3c3;
 }
