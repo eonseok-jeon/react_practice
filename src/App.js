@@ -19,17 +19,27 @@ const App = () => {
     });
   };
 
+  let content = (
+    <Card>
+      <p style={{ textAlign: 'center' }}>No Data</p>
+    </Card>
+  );
+  if (userData.length > 0) {
+    content = <UserList userData={userData} onClick={deleteHandler} />;
+  }
+
   return (
     <div>
       <Input onChange={onChangeHandler} />
-      {userData.length === 0 && (
+      {content}
+      {/* {userData.length === 0 && (
         <Card>
           <p style={{ textAlign: 'center' }}>No Data</p>
         </Card>
       )}
       {userData.length > 0 && (
         <UserList userData={userData} onClick={deleteHandler} />
-      )}
+      )} */}
     </div>
   );
 };
