@@ -35,6 +35,16 @@ form {
   margin-top: 5px;
 }
 
+.head__input.inValidName label,
+.head__input.inValidAge label {
+  color: rgb(239, 109, 109);
+}
+
+.head__input.inValidName input,
+.head__input.inValidAge input {
+  background-color: rgb(251, 160, 160);
+}
+
 .button_detail {
   width: 20%;
 }
