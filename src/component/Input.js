@@ -1,4 +1,5 @@
 import Button from '../UI/Button';
+import Card from '../UI/Card';
 import classes from './Input.module.css';
 
 const Input = () => {
@@ -7,8 +8,8 @@ const Input = () => {
   };
 
   return (
-    <div>
-      <form className={classes.wrapper__head} onSubmit={submitHandler}>
+    <Card className={classes.wrapper__head}>
+      <form onSubmit={submitHandler}>
         <div className={classes.head__inputs}>
           <div className={classes.head__input}>
             <label for='userName'>User Name</label>
@@ -21,7 +22,7 @@ const Input = () => {
         </div>
         <Button type='submit'>Add User</Button>
       </form>
-    </div>
+    </Card>
   );
 };
 

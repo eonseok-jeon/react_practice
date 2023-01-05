@@ -2,13 +2,15 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  border: 1px solid black;
   align-items: flex-start;
   margin: 50px auto;
   max-width: 35rem;
   padding: 1rem;
   background-color: #eae0d9;
   /* https://colorhunt.co/palette/f8ede3dfd3c3d0b8a885586f */
+}
+form {
+  width: 100%;
 }
 
 .head__inputs {
