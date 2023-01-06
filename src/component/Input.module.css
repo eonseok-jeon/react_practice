@@ -56,10 +56,12 @@ form {
   align-items: center;
   gap: 10px;
 }
-.button__detail {
-  width: 20%;
-}
+
 .button__wannaAdd {
   width: 60%;
   font-size: 1rem;
+}
+.button__wannaAdd:hover {
+  width: 62%;
+  height: 22px;
 }
