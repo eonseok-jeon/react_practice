@@ -37,6 +37,8 @@ const Input = (props) => {
   };
   const stopEditHandler = () => {
     setStartEdit(false);
+    setInValidName('');
+    setInValidAge('');
   };
   let main = (
     <Card className={`${classes.wrapper__head} ${classes.forAdd}`}>
