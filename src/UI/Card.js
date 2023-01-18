@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const CardCss = styled.div`
   background-color: #e3d5ca;
@@ -6,6 +6,12 @@ const CardCss = styled.div`
   width: ${(props) => props.width || '100%'};
   height: ${(props) => props.height || 'auto'};
   padding: 20px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: ${(props) => props.direction || 'column'};
+  justify-content: ${(props) => props.justify || 'center'};
+  align-items: ${(props) => props.align || 'center'};
 `;
 
 const Card = (props) => {
