@@ -4,9 +4,8 @@ import Button from '../UI/Button';
 
 const Form = styled.form`
   width: 90%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 30px;
 `;
 const Div = styled.div`
@@ -14,12 +13,21 @@ const Div = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
-const DDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  margin-top: 10px;
-  margin-left: 250px;
+const Inputs = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+`;
+const Buttons = styled.div`
+  /* display: flex;
+  gap: 30px;
+  justify-content: flex-end; */
+  text-align: right;
+  & Button:last-child {
+    margin-left: 20px;
+  }
 `;
 
 const Input = (props) => {
@@ -40,8 +48,8 @@ const Input = (props) => {
     dateInputRef.current.value = '';
   };
   return (
-    <React.Fragment>
-      <Form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler}>
+      <Inputs>
         <Div>
           <label htmlFor='title'>Title</label>
           <input
@@ -73,14 +81,14 @@ const Input = (props) => {
             required
           />
         </Div>
-      </Form>
-      <DDiv>
+      </Inputs>
+      <Buttons>
         <Button onClick={props.onClick}>Cancel</Button>
         <Button type='submit' onClick={submitHandler}>
           Add
         </Button>
-      </DDiv>
-    </React.Fragment>
+      </Buttons>
+    </Form>
   );
 };
 
