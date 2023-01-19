@@ -12,12 +12,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
   }
   body {
     background-color: #d5bdaf;
     width: 70%;
     max-width: 80%;
     margin: 50px auto;
+    font-family: sans-serif;
   }
 `;
 
