@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../UI/Button';
+import ErrorModal from './ErrorModal';
 
 const Form = styled.form`
   width: 90%;
@@ -8,12 +9,12 @@ const Form = styled.form`
   flex-direction: column;
   gap: 30px;
 `;
-const Div = styled.div`
+const ForData = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
 `;
-const Inputs = styled.div`
+const InputData = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -21,74 +22,106 @@ const Inputs = styled.div`
   gap: 30px;
 `;
 const Buttons = styled.div`
-  /* display: flex;
-  gap: 30px;
-  justify-content: flex-end; */
   text-align: right;
   & Button:last-child {
     margin-left: 20px;
   }
 `;
+const InputBox = styled.input`
+  background-color: ${(props) => (props.invalid ? 'red' : '#edede9')};
+  padding: 4px;
+  border-radius: 4px;
+  border: none;
+`;
 
 const Input = (props) => {
-  const titleInputRef = useRef();
+  const [error, setError] = useState(false);
+  const titleInputRef = useRef(() => {
+    setInValid(true);
+  });
   const priceInputRef = useRef();
   const dateInputRef = useRef();
+  const [inValid, setInValid] = useState(false);
 
   const submitHandler = (event) => {
-    event.preventDefault();
     const enteredTitle = titleInputRef.current.value;
     const enteredPrice = priceInputRef.current.value;
     const enteredDate = dateInputRef.current.value;
 
-    props.onGet(enteredTitle, enteredPrice, enteredDate);
+    if (
+      enteredTitle.trim().length > 0 &&
+      enteredPrice.trim().length > 0 &&
+      enteredDate.trim().length > 0
+    ) {
+      event.preventDefault();
+      setInValid(false);
+      props.onGet(enteredTitle, enteredPrice, enteredDate);
 
-    titleInputRef.current.value = '';
-    priceInputRef.current.value = '';
-    dateInputRef.current.value = '';
+      titleInputRef.current.value = '';
+      priceInputRef.current.value = '';
+      dateInputRef.current.value = '';
+    } else if (enteredTitle.trim().length === 0) {
+      setError('Title');
+    } else if (enteredPrice <= 0) {
+      setError('Price');
+    } else if (enteredDate.trim().length === 0) {
+      setError('Date');
+    }
   };
+  const errorHandler = () => {
+    setError(false);
+  };
+
   return (
-    <Form onSubmit={submitHandler}>
-      <Inputs>
-        <Div>
-          <label htmlFor='title'>Title</label>
-          <input
-            id='title'
-            type='text'
-            placeholder='Fill the title.'
-            ref={titleInputRef}
-            required
-          />
-        </Div>
-        <Div>
-          <label htmlFor='price'>Price</label>
-          <input
-            id='price'
-            type='number'
-            placeholder='Fill the price'
-            min='0'
-            ref={priceInputRef}
-            required
-          />
-        </Div>
-        <Div>
-          <label htmlFor='date'>Date</label>
-          <input
-            id='date'
-            type='date'
-            min='1998-11-02'
-            ref={dateInputRef}
-            required
-          />
-        </Div>
-      </Inputs>
-      <Buttons>
-        <Button onClick={props.onClick}>Cancel</Button>
-        <Button type='submit' onClick={submitHandler}>
-          Add
-        </Button>
-      </Buttons>
-    </Form>
+    // TODO: invalid input with red box
+    <React.Fragment>
+      {error && <ErrorModal errorType={error} onClick={errorHandler} />}
+
+      <Form onSubmit={submitHandler}>
+        <InputData type='submit'>
+          <ForData type='submit'>
+            <label htmlFor='title'>Title</label>
+            <InputBox
+              id='title'
+              type='text'
+              placeholder='Fill the title.'
+              ref={titleInputRef}
+              invalid={inValid}
+              required
+            />
+          </ForData>
+          <ForData>
+            <label htmlFor='price'>Price</label>
+            <InputBox
+              id='price'
+              type='number'
+              placeholder='Fill the price'
+              min='0'
+              ref={priceInputRef}
+              invalid={inValid}
+              required
+            />
+          </ForData>
+          <ForData>
+            <label htmlFor='date'>Date</label>
+            <InputBox
+              id='date'
+              type='date'
+              min='1998-11-02'
+              ref={dateInputRef}
+              invalid={inValid}
+              required
+            />
+          </ForData>
+        </InputData>
+        <Buttons>
+          <Button onClick={props.onClick}>Cancel</Button>
+          <Button type='submit' onClick={submitHandler}>
+            Add
+          </Button>
+        </Buttons>
+      </Form>
+    </React.Fragment>
   );
 };
 

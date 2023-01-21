@@ -12,7 +12,7 @@ const CardCss = styled.div`
   flex-direction: ${(props) => props.direction || 'column'};
   justify-content: ${(props) => props.justify || 'center'};
   align-items: ${(props) => props.align || 'center'};
-  gap: 20px;
+  gap: ${(props) => props.gap || '20px'};
 `;
 
 const Card = (props) => {
