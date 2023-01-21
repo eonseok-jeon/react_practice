@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Input from './Component/Input';
 import styled from 'styled-components';
 import List from './Component/List';
-import ErrorModal from './Component/ErrorModal';
+import Chart from './Component/Chart';
 
 const Div = styled.div`
   display: flex;
@@ -35,7 +35,6 @@ const App = () => {
       ];
     });
   };
-  const errorHandler = () => {};
   const deleteHandler = (getID) => {
     setItems((prev) => prev.filter((elem) => elem.id !== getID));
   };
@@ -61,6 +60,7 @@ const App = () => {
     <Div>
       {content}
       {/* FIXME: scroll */}
+      <Chart />
       <Card>
         {isEmpty && <div>No data founded</div>}
         {!isEmpty && <List onClick={deleteHandler} items={items} />}
