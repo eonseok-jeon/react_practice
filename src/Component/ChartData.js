@@ -5,6 +5,7 @@ const ChartWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  flex-shrink: 0;
 `;
 const ChartBox = styled.div`
   width: 10px;

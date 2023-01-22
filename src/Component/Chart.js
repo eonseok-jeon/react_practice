@@ -2,6 +2,14 @@ import styled from 'styled-components';
 import Card from '../UI/Card';
 import ChartData from './ChartData';
 
+const CardFlex = styled(Card)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 95%;
+  max-width: 650px;
+`;
 const ChartTitle = styled.div`
   width: 95%;
   display: flex;
@@ -11,15 +19,24 @@ const ChartTitle = styled.div`
 `;
 const ChartCard = styled(Card)`
   background-color: #f5ebe0;
+  overflow: auto;
+  display: flex;
+  /* justify-content: center; */
+`;
+const ScrollDiv = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 `;
 
 const Chart = () => {
   return (
-    <Card>
+    <CardFlex>
       <ChartTitle>
         <p>Chart</p>
         <select>
-          <option selected disabled>
+          <option value='year' selected disabled>
             Year
           </option>
           <option>1</option>
@@ -27,21 +44,23 @@ const Chart = () => {
           <option>3</option>
         </select>
       </ChartTitle>
-      <ChartCard direction='row' gap='20px'>
-        <ChartData>Jan</ChartData>
-        <ChartData>Feb</ChartData>
-        <ChartData>Mar</ChartData>
-        <ChartData>Apr</ChartData>
-        <ChartData>May</ChartData>
-        <ChartData>Jun</ChartData>
-        <ChartData>Jul</ChartData>
-        <ChartData>Aug</ChartData>
-        <ChartData>Sep</ChartData>
-        <ChartData>Oct</ChartData>
-        <ChartData>Nov</ChartData>
-        <ChartData>Dec</ChartData>
+      <ChartCard>
+        <ScrollDiv>
+          <ChartData>Jan</ChartData>
+          <ChartData>Feb</ChartData>
+          <ChartData>Mar</ChartData>
+          <ChartData>Apr</ChartData>
+          <ChartData>May</ChartData>
+          <ChartData>Jun</ChartData>
+          <ChartData>Jul</ChartData>
+          <ChartData>Aug</ChartData>
+          <ChartData>Sep</ChartData>
+          <ChartData>Oct</ChartData>
+          <ChartData>Nov</ChartData>
+          <ChartData>Dec</ChartData>
+        </ScrollDiv>
       </ChartCard>
-    </Card>
+    </CardFlex>
   );
 };
 

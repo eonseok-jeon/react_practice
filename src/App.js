@@ -6,9 +6,19 @@ import styled from 'styled-components';
 import List from './Component/List';
 import Chart from './Component/Chart';
 
-const Div = styled.div`
+const CardFlex = styled(Card)`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+`;
+const Div = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 40px;
 `;
 
@@ -40,15 +50,15 @@ const App = () => {
   };
 
   let content = (
-    <Card width='30%'>
+    <CardFlex width='30%'>
       <Button onClick={clickHandler}>Click Me!</Button>
-    </Card>
+    </CardFlex>
   );
   if (isEditing) {
     content = (
-      <Card width='90%' height='300px'>
+      <CardFlex width='90%' height='300px' maxWidth='550px'>
         <Input onGet={getItemHandler} onClick={clickHandler2} />
-      </Card>
+      </CardFlex>
     );
   }
   let isEmpty = true;
@@ -61,10 +71,10 @@ const App = () => {
       {content}
       {/* FIXME: scroll */}
       <Chart />
-      <Card>
+      <CardFlex width='100%'>
         {isEmpty && <div>No data founded</div>}
         {!isEmpty && <List onClick={deleteHandler} items={items} />}
-      </Card>
+      </CardFlex>
     </Div>
   );
 };

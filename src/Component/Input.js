@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../UI/Button';
-import ErrorModal from './ErrorModal';
+import ErrorModal from '../UI/ErrorModal';
 
 const Form = styled.form`
   width: 90%;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  max-width: 500px;
 `;
 const ForData = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ const InputBox = styled.input`
   padding: 4px;
   border-radius: 4px;
   border: none;
+  width: 100%;
 `;
 
 const Input = (props) => {
