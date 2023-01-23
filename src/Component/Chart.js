@@ -21,7 +21,6 @@ const ChartCard = styled(Card)`
   background-color: #f5ebe0;
   overflow: auto;
   display: flex;
-  /* justify-content: center; */
 `;
 const ScrollDiv = styled.div`
   margin: 0 auto;
