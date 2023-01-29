@@ -4,7 +4,7 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 
 function App() {
-  const toggle = useSelector((state) => state.toggle.toggle);
+  const toggle = useSelector((state) => state.ui.toggle);
   return (
     <Layout>
       {toggle && <Cart />}
